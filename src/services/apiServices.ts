@@ -5,9 +5,11 @@ export default class ApiService {
     try {
       const bidding = new Bidding(data)
       await bidding.save()
+      Promise.resolve()
     } catch (err) {
       if (err instanceof Error) {
         console.error(err.message)
+        throw Error(err.message)
       }
     }
   }

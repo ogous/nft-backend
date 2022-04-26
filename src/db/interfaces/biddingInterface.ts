@@ -1,5 +1,5 @@
 interface IBidding {
-  imageURL: string
+  imageUrl: string
   title: string
   endTime: Date
   lastPrice: number
