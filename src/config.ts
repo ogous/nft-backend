@@ -4,4 +4,8 @@ const DBConnectionInfo = {
   uri: process.env.DB ?? 'mongodb://localhost:27017/myapp',
 }
 
-export { DBConnectionInfo }
+const Server = {
+  port: process.env.PORT || 8000,
+  client: process.env.CLIENT,
+}
+export { Server, DBConnectionInfo }
