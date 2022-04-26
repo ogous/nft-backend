@@ -2,6 +2,7 @@
   "name": "nft-marketplace-backend",
   "version": "1.0.0",
   "main": "src/main.ts",
+  "private": true,
   "scripts": {
     "dev": "nodemon ./src/main.ts",
     "clean": "rm -rf ./dist/* ",
