@@ -21,11 +21,11 @@ class StorageService {
   public storage: Storage
 
   constructor() {
-    const keyFile = require('./keyfile.json')
+    // const keyFile = require('./keyfile.json')
 
     const config: StorageOptions = {
       projectId: 'dev-edu-347906',
-      keyFile,
+      // keyFile,
     }
 
     this.storage = new Storage(config)
