@@ -6,6 +6,9 @@ const biddingSchema = new Schema<IBidding>({
   title: { type: String, required: true },
   endTime: { type: Date, required: true },
   lastPrice: { type: Number, required: true },
+  category: { type: String, required: true },
+  owner: { type: String, required: true },
+  creator: { type: String, required: true },
 })
 
 export { biddingSchema }

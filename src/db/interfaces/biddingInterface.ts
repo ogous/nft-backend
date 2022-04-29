@@ -8,12 +8,14 @@ enum BiddingCategory {
 }
 
 interface IBidding {
+  _id?: string
   imageUrl: string
   title: string
   endTime: Date
   lastPrice: number
   category: BiddingCategory
-  user: string
+  owner: string
+  creator?: string
 }
 
 export { IBidding }

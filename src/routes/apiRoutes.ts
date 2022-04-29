@@ -18,32 +18,42 @@ const router: Router = Router()
 // @desc    Create a NFT Bidding
 // @access  Public
 router.post('/create', async (req: Request, res: Response) => {
-  required('title', 'endTime', 'lastPrice', 'category', 'user')(req.body)
-
+  required('title', 'endTime', 'lastPrice', 'category', 'owner')(req.body)
   try {
     await new ApiService().create(req.body)
-    res.status(200).send('success')
-  } catch (error) {
-    if (error instanceof Error) res.status(400).send(error.message)
+    res.status(200)
+  } catch (e) {
+    if (e instanceof Error) res.status(500).send(e.message)
   } finally {
     res.end()
   }
 })
 
-// @route   GET api/list
+// @route   POST api/list
 // @desc    List NFT Biddings
 // @access  Public
-router.get('/list', async (req: Request, res: Response) => {
-  const response = await new ApiService().list()
+router.post('/list', async (req: Request, res: Response) => {
+  try {
+    const response = await new ApiService().list(req.body)
 
-  if (!response) {
-    res.status(500)
+    res.status(200).send(response)
+  } catch (e) {
+    if (e instanceof Error) res.status(500).send(e.message)
   }
-  res.status(200).send(response)
 })
 
-router.get('/hello', async (req: Request, res: Response) => {
-  res.send('Hello NFT World!')
+// @route   POST api/makeBid
+// @desc    Make an new offer
+// @access  Public
+router.post('/makeBid', async (req: Request, res: Response) => {
+  required('id', 'user', 'lastPrice')(req.body)
+
+  try {
+    await new ApiService().makeBid(req.body)
+    res.status(200)
+  } catch (e) {
+    if (e instanceof Error) res.status(500).send(e.message)
+  }
 })
 
 export default router
