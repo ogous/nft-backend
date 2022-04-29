@@ -1,4 +1,5 @@
 import Bidding, { IBidding } from '../db/models/biddingModel'
+import { storage } from '../db/index'
 
 export default class ApiService {
   public async create(data: IBidding) {

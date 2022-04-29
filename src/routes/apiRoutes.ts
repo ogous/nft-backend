@@ -1,14 +1,25 @@
 import { Router, Response, Request } from 'express'
 import required from '../decorators/argumentsRequired'
 import ApiService from '../services/apiServices'
+import multer from 'multer'
 
 const router: Router = Router()
+// const upload = multer()
+// const nftUpload = upload.fields([
+//   { name: 'image', maxCount: 1 },
+//   { name: 'title' },
+//   { name: 'endTime' },
+//   { name: 'lastPrice' },
+//   { name: 'category' },
+//   { name: 'user' },
+// ])
 
 // @route   POST api/create
 // @desc    Create a NFT Bidding
 // @access  Public
 router.post('/create', async (req: Request, res: Response) => {
-  required('imageUrl', 'title', 'endTime', 'lastPrice')(req.body)
+  required('title', 'endTime', 'lastPrice', 'category', 'user')(req.body)
+
   try {
     await new ApiService().create(req.body)
     res.status(200).send('success')

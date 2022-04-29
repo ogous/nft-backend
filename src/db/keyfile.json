@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "dev-edu-347906",
+    "private_key_id": "f7666939cb60482f4534be5ab0801dba24f8ebd5",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCr3/olLck1KxqA\nyk6Qx4MPt/b79V9MsmWBkPZVRBsfHqPtUM9AeCPa5y3sExiorFkcUi3obiakVRog\nkc9Rb36J3MH2pMWIr5jI431WzjJ7if/75z2RLU2R7Jbi6fXpfjE2/re2Xvv+gRDp\nFvBBH3zdSRbW26yP8dKWiznhxkGE5jQ46Tlx5ZYih/4UO7MKROB2MWAnX2CObx/S\nTqnVNqneOoL9lKR5oQmzfPl2PUqRXY4kbT41nY4h92EszNHsQBpCwlX9JK6einPM\ngLX0tX/61r8ob6y4QmFZv/4sk59ty8Rjmo/7MitUZTBuL82ri8HwHAZXjsBnSjEn\nzbKDdNanAgMBAAECggEAExRC5VumyUMmpwNOI14yW01VmnSLhq0K/Y4E+kQcKqEx\nG0fsKcDsYgFlpJ4eD6NKJQ2uUO3hVj6oLtNgyy5wQoeB9Ion71tmv24ZXMh47CPO\nib0KpZH82WUE/t1v0eKTPgKajCERIhhbszQ7qU8AgmP5qBIsnrH+aX29CCYE4eap\nC8DI5JDsOlmEhIp8NcYUq4VooT1JPxTQohmhSe4jSHnRpOhaU0sWIfpsZ5z4vEsV\ntzE3Ka+gwAmotyYNrghQEL+Iya/0WnWnAFnX+1PnGyOu2PteKdD9pVoX/G0HYGan\nKfRtnTnTCgorda2r7p1a9qC+hwOXb283InkmpyBxYQKBgQDvmwk4zBlwzbzZl1se\nE3/LxjtV4IyKpCPNyFDfOpGJKowBFwUyi9jBhNiI8m/tPNvSZClZ98fYISRzSp6E\nkcpeIIW5wOpknxzXnpCme5TcPr2Zv8CQABObWZYyu0ASOJmQ5fYNS+OKwOUGRFvP\nzo+fOM73TBMO50lr5Rmi7NzqMQKBgQC3oo+kr7or5ug/ndBnWZIBhfpT8IsIbwZl\nL1FRAaDTwdL1gZFoTKwvpzcqB61mk1NRnHr8LGxx/qC5JFgl3kc2KsQ+uvPN1h22\n/kwaaTDhs3v+FFQSuCRgXNw56vlngVgUbsWjdTrXec4pQPpTgNCWIvRXgezYawrr\njqGVDOVAVwKBgQDvb/uIMZVev4nv2yun4456wO68g7eOODa7RmlimfGjo8virvF3\nsH577FhCihrFdWKqXYNhL5Yaagw11iSQj+wtocxgcuMIiGRXKFKeu7JnYZ8wzIkO\nnbT6Mk1BBxQg4US8osD+So7pMpfralZhVKb7UtaoE/Kbmw8o7flvccnVkQKBgQCs\nGhl/ogXcUVtHC/OeeK7C6LrUYnMbI1qeCDuwrNL6wwOgfZ82Xe1d99xWcr2LjfWf\nXgVRQ50bNSWSfsJyMyEQXgJwPCx0tABDWY8fjYh3bwx88rZcmOHWwhDP4y19WRag\nh7SI3jyYZ5rUxQYWrnpOy1GulaDQr3mbjKBZHa3ZnwKBgB3BsQeoF5vJXTel+o3z\nWIGUMpFaEMnPvxgf/yWp5Eb1aV4y0Y0c0j5CokXVmK5BwNSbVZGwtJ7WrRu45b6K\nWIvjQNOG7zw/nnaBrda+obkye0stnqmirZjLoOcIB/v1nw5ark6o3o81zHlV81RT\nJWkDZQmBzaCAR7O36xWiOs2A\n-----END PRIVATE KEY-----\n",
+    "client_email": "nft-storage@dev-edu-347906.iam.gserviceaccount.com",
+    "client_id": "113586387906958815974",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nft-storage%40dev-edu-347906.iam.gserviceaccount.com"
+}

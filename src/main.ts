@@ -1,6 +1,6 @@
 import express, { Express } from 'express'
 import bodyParser from 'body-parser'
-import connectDB from './db'
+import { connectDB } from './db'
 import apiRouter from './routes/apiRoutes'
 import cors from 'cors'
 import { Server } from './config'
@@ -9,8 +9,15 @@ const server: Express = express()
 
 connectDB()
 
+var whitelist = [Server.client, 'http://localhost:3000']
 var corsOptions = {
-  origin: Server.client,
+  origin: (origin: string | undefined, callback: (e: Error | null, state?: boolean) => void) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
