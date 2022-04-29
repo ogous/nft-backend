@@ -42,4 +42,8 @@ router.get('/list', async (req: Request, res: Response) => {
   res.status(200).send(response)
 })
 
+router.get('/hello', async (req: Request, res: Response) => {
+  res.send('Hello NFT World!')
+})
+
 export default router
