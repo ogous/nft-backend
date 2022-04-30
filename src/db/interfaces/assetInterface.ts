@@ -1,4 +1,4 @@
-enum BiddingCategory {
+enum AssetCategory {
   art = 'art',
   celebrities = 'celebrities',
   gaming = 'gaming',
@@ -7,15 +7,20 @@ enum BiddingCategory {
   crypto = 'crypto',
 }
 
-interface IBidding {
+interface LastSale {
+  user: string
+  price: number
+  eventTime: Date
+}
+
+interface IAsset {
   _id?: string
   imageUrl: string
   title: string
   endTime: Date
-  lastPrice: number
-  category: BiddingCategory
-  owner: string
-  creator?: string
+  lastSale: LastSale
+  category: AssetCategory
+  creator: string
 }
 
-export { IBidding }
+export { IAsset }

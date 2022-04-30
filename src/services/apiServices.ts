@@ -1,11 +1,12 @@
-import Bidding, { IBidding } from '../db/models/biddingModel'
+import Asset, { IAsset } from '../db/models/assetModel'
 import { storage } from '../db/index'
-import { BiddingCategory } from '../objects/bidding'
+import { AssetCategory } from '../objects/asset'
+import { assert } from 'console'
 export default class ApiService {
-  public async create(data: IBidding) {
+  public async create(data: IAsset) {
     try {
-      const bidding = new Bidding(data)
-      await bidding.save()
+      const asset = new Asset(data)
+      await asset.save()
     } catch (err) {
       if (err instanceof Error) {
         console.error(err.message)
@@ -21,9 +22,9 @@ export default class ApiService {
     offset: number
     limit: number
     category: string
-  }): Promise<IBidding[] | undefined> {
+  }): Promise<IAsset[] | undefined> {
     try {
-      if (category && !Object.values(BiddingCategory).find((cat) => cat === category)) {
+      if (category && !Object.values(AssetCategory).find((cat) => cat === category)) {
         throw new Error('Unknown category')
       }
       const filter: { category?: string } = {}
@@ -32,7 +33,7 @@ export default class ApiService {
         filter.category = category
       }
 
-      const response = await Bidding.find(filter).skip(offset).limit(limit).exec()
+      const response = await Asset.find(filter).skip(offset).limit(limit).exec()
 
       return response
     } catch (err) {
@@ -42,16 +43,32 @@ export default class ApiService {
     }
   }
 
-  public async makeBid({ _id, user, lastPrice }: { _id: string; user: string; lastPrice: number }) {
+  public async makeBid({ id, user, price }: { id: string; user: string; price: number }) {
     try {
-      const response = await Bidding.findOne({ _id }, 'endTime').exec()
+      const response = await Asset.findOne({ _id: id }, 'endTime lastSale').exec()
+      const NOW = new Date().getTime()
       if (response?.endTime) {
-        throw new Error('Bidding is ended!')
+        const FUTURE = new Date(response.endTime).getTime()
+
+        if (FUTURE - NOW < 0) return new Error('Asset bidding is ended!')
+      }
+      if (response?.lastSale) {
+        const FUTURE = new Date(response.lastSale.eventTime).getTime()
+
+        if (FUTURE - NOW < 0) return new Error('There is a new sale operation, please try again')
+        if (response.lastSale.price > price)
+          return new Error('There is a higher price sale operation, please try again')
       }
 
-      const transaction = await Bidding.findOneAndUpdate({ _id }, { owner: user, lastPrice })
+      response?.updateOne({
+        lastSale: {
+          user,
+          price,
+          eventTime: new Date(),
+        },
+      })
 
-      return transaction
+      return response
     } catch (err) {
       if (err instanceof Error) {
         console.error(err.message)

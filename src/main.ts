@@ -12,7 +12,7 @@ connectDB()
 var whitelist = [Server.client, 'http://localhost:3000']
 var corsOptions = {
   origin: (origin: string | undefined, callback: (e: Error | null, state?: boolean) => void) => {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (process.env.NODE_ENV !== 'production' || whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -21,7 +21,6 @@ var corsOptions = {
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-// Express configuration
 server.set('port', Server.port)
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: false }))

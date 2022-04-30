@@ -15,7 +15,7 @@ const router: Router = Router()
 // ])
 
 // @route   POST api/create
-// @desc    Create a NFT Bidding
+// @desc    Create a NFT Asset
 // @access  Public
 router.post('/create', async (req: Request, res: Response) => {
   required('title', 'endTime', 'lastPrice', 'category', 'owner')(req.body)
@@ -30,7 +30,7 @@ router.post('/create', async (req: Request, res: Response) => {
 })
 
 // @route   POST api/list
-// @desc    List NFT Biddings
+// @desc    List NFT Assets
 // @access  Public
 router.post('/list', async (req: Request, res: Response) => {
   try {
@@ -46,13 +46,15 @@ router.post('/list', async (req: Request, res: Response) => {
 // @desc    Make an new offer
 // @access  Public
 router.post('/makeBid', async (req: Request, res: Response) => {
-  required('id', 'user', 'lastPrice')(req.body)
+  required('id', 'user', 'price')(req.body)
 
   try {
     await new ApiService().makeBid(req.body)
     res.status(200)
   } catch (e) {
     if (e instanceof Error) res.status(500).send(e.message)
+  } finally {
+    res.end()
   }
 })
 
