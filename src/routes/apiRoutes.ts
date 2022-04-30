@@ -52,7 +52,9 @@ router.post('/makeBid', async (req: Request, res: Response) => {
     await new ApiService().makeBid(req.body)
     res.status(200)
   } catch (e) {
-    if (e instanceof Error) res.status(500).send(e.message)
+    if (e instanceof Error) {
+      res.status(404).send(e.message)
+    }
   } finally {
     res.end()
   }
