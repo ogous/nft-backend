@@ -37,3 +37,6 @@ yarn-error.log*
 
 #local notes
 .notes
+
+# prevent google cloud access
+keyfile.json

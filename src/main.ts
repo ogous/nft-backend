@@ -22,9 +22,9 @@ var corsOptions = {
 }
 
 server.set('port', Server.port)
-server.use(bodyParser.json())
-server.use(bodyParser.urlencoded({ extended: false }))
 server.use(cors(corsOptions))
+server.use(express.json({ limit: '50mb' }))
+server.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 server.use('/api', apiRouter)
 
 const start = async () => {

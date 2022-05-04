@@ -1,11 +1,28 @@
 import Asset, { IAsset } from '../db/models/assetModel'
 import { storage } from '../db/index'
 import { AssetCategory } from '../objects/asset'
-import { assert } from 'console'
+
 export default class ApiService {
-  public async create(data: IAsset) {
+  public async upload(file: Express.Multer.File) {
     try {
-      const asset = new Asset(data)
+      const blob = storage.file(file.originalname)
+
+      // const blobStream = blob.createReadStream()
+      await blob.save(file.buffer, { public: true })
+
+      return blob.publicUrl()
+    } catch (e) {
+      if (e instanceof Error) console.log(e.message)
+    }
+  }
+
+  public async create(data: IAsset, file: Express.Multer.File) {
+    try {
+      if (!file) throw new Error('Image not found')
+      const imageUrl = await this.upload(file)
+      if (!imageUrl) throw new Error('Image could not uploaded')
+
+      const asset = new Asset({ ...data, imageUrl })
       await asset.save()
     } catch (err) {
       if (err instanceof Error) {

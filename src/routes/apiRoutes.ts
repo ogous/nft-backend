@@ -4,23 +4,21 @@ import ApiService from '../services/apiServices'
 import multer from 'multer'
 
 const router: Router = Router()
-// const upload = multer()
-// const nftUpload = upload.fields([
-//   { name: 'image', maxCount: 1 },
-//   { name: 'title' },
-//   { name: 'endTime' },
-//   { name: 'lastPrice' },
-//   { name: 'category' },
-//   { name: 'user' },
-// ])
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // no larger than 5mb, you can change as needed.
+  },
+})
 
 // @route   POST api/create
 // @desc    Create a NFT Asset
 // @access  Public
-router.post('/create', async (req: Request, res: Response) => {
-  required('title', 'endTime', 'lastPrice', 'category', 'owner')(req.body)
+router.post('/create', upload.any(), async (req: Request, res: Response) => {
   try {
-    await new ApiService().create(req.body)
+    const files = req.files as Express.Multer.File[]
+    console.log(files[0].path)
+    await new ApiService().create(req.body, files[0])
     res.status(200)
   } catch (e) {
     if (e instanceof Error) res.status(500).send(e.message)
