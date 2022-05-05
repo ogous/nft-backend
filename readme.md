@@ -6,5 +6,5 @@ docker build -t nft .
 
 #DOCKER CONTAINER REGISTRY - GCP
 
-docker tag 788341ead836 eu.gcr.io/dev-edu/nft
-docker push eu.gcr.io/dev-edu/nft
+docker tag 788341ead836 eu.gcr.io/dev-edu-347906/nft
+docker push eu.gcr.io/dev-edu-347906/nft

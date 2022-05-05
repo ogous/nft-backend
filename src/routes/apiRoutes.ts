@@ -17,7 +17,6 @@ const upload = multer({
 router.post('/create', upload.any(), async (req: Request, res: Response) => {
   try {
     const files = req.files as Express.Multer.File[]
-    console.log(files[0].path)
     await new ApiService().create(req.body, files[0])
     res.status(200)
   } catch (e) {
