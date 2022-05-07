@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile:experimental
 FROM node:14-alpine AS builder
 ENV NODE_ENV build
 WORKDIR /usr/src/app
