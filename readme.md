@@ -1,5 +1,5 @@
 #DOCKER RUN COMMAND
-docker container run -e DB='mongodb+srv://oguzhanali:vuak1965xiox123@cluster0.jfxwd.mongodb.net/Capsule?retryWrites=true&w=majority' -e PORT=8080 -e CLIENT='https://nft-marketplace-one-xi.vercel.app' -e KEYFILE='Helloo World' -dp 8080:8080 nft
+docker container run -e DB='mongodb+srv://oguzhanali:vuak1965xiox123@cluster0.jfxwd.mongodb.net/Capsule?retryWrites=true&w=majority' -e PORT=8080 -e CLIENT='https://nft-marketplace-one-xi.vercel.app' -dp 8080:8080 nft
 
 #DOCKER BUILD COMMAND
 docker build -t nft .
