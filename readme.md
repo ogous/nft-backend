@@ -10,5 +10,3 @@ docker build -t nft .
 
 docker tag 788341ead836 eu.gcr.io/dev-edu-347906/nft
 docker push eu.gcr.io/dev-edu-347906/nft
-
-.
