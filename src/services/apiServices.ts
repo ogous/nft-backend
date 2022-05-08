@@ -12,7 +12,7 @@ export default class ApiService {
 
       return blob.publicUrl()
     } catch (e) {
-      if (e instanceof Error) console.log(e.message)
+      if (e instanceof Error) console.log('Mr. Anderson', e.message, e.name, e.stack)
     }
   }
 
