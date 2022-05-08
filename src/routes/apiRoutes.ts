@@ -15,6 +15,8 @@ const upload = multer({
 // @desc    Create a NFT Asset
 // @access  Public
 router.post('/create', upload.any(), async (req: Request, res: Response) => {
+  required('title', 'endTime', 'category', 'creator')(req.body)
+
   try {
     const files = req.files as Express.Multer.File[]
     await new ApiService().create(req.body, files[0])
