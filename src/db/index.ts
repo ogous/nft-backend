@@ -23,7 +23,7 @@ class StorageService {
   constructor() {
     const config: StorageOptions = {
       projectId: 'dev-edu-347906',
-      keyFile: '/secrets/storage-sa',
+      keyFilename: '/secrets/storage-sa',
     }
 
     this.storage = new Storage(config)
