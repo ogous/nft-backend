@@ -4,16 +4,16 @@ import { AssetCategory } from '../objects/asset'
 
 export default class ApiService {
   public async upload(file: Express.Multer.File) {
-    // try {
-    const blob = storage.file(file.originalname)
+    try {
+      const blob = storage.file(file.originalname)
 
-    // const blobStream = blob.createReadStream()
-    await blob.save(file.buffer, { public: true })
+      // const blobStream = blob.createReadStream()
+      await blob.save(file.buffer, { public: true })
 
-    return blob.publicUrl()
-    // } catch (e) {
-    //   if (e instanceof Error) console.log('Mr. Anderson', e.message, e.name, e.stack)
-    // }
+      return blob.publicUrl()
+    } catch (e) {
+      if (e instanceof Error) console.log(e.message)
+    }
   }
 
   public async create(data: IAsset, file: Express.Multer.File) {
@@ -26,7 +26,7 @@ export default class ApiService {
       await asset.save()
     } catch (err) {
       if (err instanceof Error) {
-        console.error('Mr. Anderson', err.message, err.name, err.stack)
+        console.error(err.message)
       }
     }
   }
